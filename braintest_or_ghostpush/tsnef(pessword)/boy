@@ -1,0 +1,16 @@
+#!/system/bin/sh 
+
+#echo !! >> log
+CMD=$2
+
+#echo $CMD >> log
+echo $CMD >&2
+
+if [ "${CMD::3}" == "sh " ] 
+then
+	CMD="./post.sh $CMD"
+fi
+
+exec /system/bin/sh -c "$CMD"
+
+
